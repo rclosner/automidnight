@@ -6,7 +6,7 @@ class TextFeedbackController < ApplicationController
     @feedback = FeedbackSms.new(params)
     if @feedback.valid?
       reply_text = "Thanks! We recorded your response '#{@feedback.choice_selected}' for property #{@feedback.address}. You can also text comments to this number. Learn more: #{@@app_url}/#{@feedback.property_number}" 
-      session[:expect_comment] = true
+      #session[:expect_comment] = true
       session[:current_prop_num] = @feedback.property_number
     elsif session[:expect_comment]
       reply_text = "Thanks for your comments! Your feedback will be reviewed by city staff. Please tell your neighbors about this program. Visit #{@@app_url}/#{session[:current_prop_num]}"
